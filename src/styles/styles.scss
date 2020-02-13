@@ -1,3 +1,113 @@
+$carouselBg: #e9eee6;
+$carouselItemBg: white;
+$headingColor: #00679a;
+$buttonBg: #00679a;
+$buttonBgLight: #2c98ce;
+$buttonText: white;
+$spacing: 1rem;
+$breakpoint-tablet: 768px;
+
 body {
   font-family: 'Ropa Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.card-carousel {
+  position: relative;
+  padding: $spacing 0;
+  background-color: $carouselBg;
+
+  &__heading {
+    margin: 0 0 $spacing 0;
+    padding: 0 $spacing;
+    color: $headingColor;
+  }
+
+  &-item {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 0 $spacing 0;
+
+    @media (min-width: $breakpoint-tablet) {
+      padding: 0 $spacing $spacing $spacing;
+    }
+
+    &__image {
+      img {
+        width: 100%;
+      }
+    }
+    
+    &-list {
+      display: flex;
+      padding: $spacing;
+      background-color: $carouselItemBg;
+      justify-content: center;
+    }
+
+    &__heading {
+      margin: $spacing 0 0 0;
+      color: $headingColor;
+    }
+  }
+
+  &-nav {
+    padding: $spacing;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    box-sizing: border-box;
+
+    @media (min-width: $breakpoint-tablet) {
+      position: static;
+      width: auto;
+      justify-content: center;
+    }
+
+    &__item {
+      display: block;
+      border: none;
+      font-size: 0;
+      width: 2rem;
+      height: 4rem;
+      padding: 0;
+      background: url('/arrow.svg') no-repeat;
+      
+      @media (min-width: $breakpoint-tablet) {
+        padding: $spacing / 2 $spacing;
+        background-image: none;
+        background-color: $buttonBg;
+        color: $buttonText;
+        font-family: 'Ropa Sans', sans-serif;
+        font-size: 1rem;
+        cursor: pointer;
+        width: auto;
+        height: auto;
+      }
+
+      &:hover {
+        @media (min-width: $breakpoint-tablet) {
+          background-color: $buttonBgLight;
+        }
+      }
+
+      &--prev {
+        transform:scaleX(-1);
+
+        @media (min-width: $breakpoint-tablet) {
+          margin-right: $spacing / 4;
+          transform: none;
+        }
+      }
+
+      &--next {
+        margin-left: auto;
+        @media (min-width: $breakpoint-tablet) {
+          margin-left: $spacing / 4;
+        }
+      }
+    }
+  }
 }
